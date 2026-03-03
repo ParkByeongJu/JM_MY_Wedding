@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>김재민 ♥ 김미영 결혼식에 초대합니다</title>
+
+  <!-- OG Tags for KakaoTalk / SNS sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="김재민 ♥ 김미영 결혼식에 초대합니다">
+  <meta property="og:description" content="2026년 5월 2일 토요일 | 개쩌는 웨딩홀">
+  <meta property="og:image" content="images/main.jpg">
+  <meta property="og:url" content="">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Noto+Serif+KR:wght@300;400;600&family=Noto+Sans+KR:wght@300;400&display=swap" rel="stylesheet">
+
+  <!-- Kakao Maps API -->
+  <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=8e7536ff950856d1b03cd93cd3c4c147&libraries=services&autoload=false"></script>
+
+  <style>
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #4a7c9e;
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+      font-family: 'Noto Sans KR', sans-serif;
+    }
+
+    .wrapper {
+      width: 100%;
+      max-width: 480px;
+      background: #fff;
+      position: relative;
+    }
+
+    /* ============================================================
+       SECTION COMMON
+    ============================================================ */
+    section {
+      padding: 52px 24px;
+    }
+
+    .section-label {
+      font-family: 'Dancing Script', cursive;
+      font-size: 18px;
+      color: #FFD700;
+      text-align: center;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+
+    .section-title {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 14px;
+      font-weight: 300;
+      color: #888;
+      text-align: center;
+      letter-spacing: 5px;
+      margin-bottom: 28px;
+    }
+
+    .divider {
+      width: 36px;
+      height: 1px;
+      background: #e0e0e0;
+      margin: 0 auto 32px;
+    }
+
+    /* ============================================================
+       1. INTRO SECTION
+    ============================================================ */
+    #intro {
+      padding: 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .intro-photo-wrapper {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      overflow: hidden;
+      background: linear-gradient(135deg, #a8c5da 0%, #6a9ab8 50%, #4a7c9e 100%);
+    }
+
+    .intro-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .intro-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 36px;
+      pointer-events: none;
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.62) 0%,
+        rgba(0, 0, 0, 0.28) 25%,
+        rgba(0, 0, 0, 0.08) 50%,
+        transparent 70%
+      );
+    }
+
+    .wedding-day-text {
+      font-family: 'Dancing Script', cursive;
+      font-size: 44px;
+      color: #FFD700;
+      text-shadow: 1px 2px 8px rgba(0, 0, 0, 0.25);
+      opacity: 0;
+      animation: fadeInDown 1.2s ease 0.3s forwards;
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Bubble particles */
+    .bubble {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle at 32% 28%,
+        rgba(255, 255, 255, 0.85) 0%,
+        rgba(255, 255, 255, 0.15) 60%,
+        transparent 100%);
+      border: 1.2px solid rgba(255, 255, 255, 0.55);
+      pointer-events: none;
+      animation: bubbleFloat linear infinite;
+    }
+
+    @keyframes bubbleFloat {
+      0% {
+        transform: translateY(0) translateX(0) scale(1);
+        opacity: 0;
+      }
+      10% { opacity: 0.75; }
+      50% {
+        transform: translateY(-45%) translateX(12px) scale(1.04);
+        opacity: 0.5;
+      }
+      90% { opacity: 0.15; }
+      100% {
+        transform: translateY(-110%) translateX(-8px) scale(0.75);
+        opacity: 0;
+      }
+    }
+
+    /* Intro text block below photo */
+    .intro-info {
+      background: #fff;
+      padding: 34px 24px 28px;
+      text-align: center;
+    }
+
+    .intro-names {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 26px;
+      font-weight: 400;
+      color: #2c2c2c;
+      letter-spacing: 8px;
+      margin-bottom: 18px;
+    }
+
+    .intro-date,
+    .intro-venue {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 12.5px;
+      font-weight: 300;
+      color: #888;
+      letter-spacing: 2px;
+      line-height: 1.8;
+    }
+
+    .intro-invitation {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 10.5px;
+      font-weight: 300;
+      color: #ccc;
+      letter-spacing: 7px;
+      margin-top: 18px;
+      padding-bottom: 8px;
+    }
+
+    /* ============================================================
+       2. GREETING SECTION
+    ============================================================ */
+    #greeting {
+      background: #fcfcfc;
+      text-align: center;
+    }
+
+    .greeting-text {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 14px;
+      font-weight: 300;
+      color: #555;
+      line-height: 2.1;
+      letter-spacing: 0.3px;
+    }
+
+    .greeting-sub {
+      margin-top: 24px;
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 12px;
+      font-weight: 300;
+      color: #aaa;
+      letter-spacing: 1px;
+      line-height: 1.9;
+    }
+
+    /* ============================================================
+       3. CALENDAR SECTION
+    ============================================================ */
+    #calendar {
+      text-align: center;
+    }
+
+    .calendar-month-label {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 12px;
+      font-weight: 300;
+      color: #777;
+      letter-spacing: 3px;
+      margin-bottom: 18px;
+    }
+
+    .calendar-container {
+      max-width: 300px;
+      margin: 0 auto;
+    }
+
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 2px;
+    }
+
+    .cal-header {
+      font-size: 11px;
+      font-weight: 400;
+      color: #bbb;
+      text-align: center;
+      padding: 6px 0 10px;
+    }
+    .cal-header.sun { color: #e05252; }
+    .cal-header.sat { color: #5279e0; }
+
+    .cal-day {
+      font-size: 13px;
+      font-weight: 300;
+      color: #444;
+      text-align: center;
+      padding: 7px 2px;
+      border-radius: 50%;
+      aspect-ratio: 1 / 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 1px auto;
+      width: 32px;
+      height: 32px;
+    }
+    .cal-day.sun { color: #e05252; }
+    .cal-day.sat { color: #5279e0; }
+    .cal-day.empty { visibility: hidden; }
+    .cal-day.highlight {
+      background: #FFD700;
+      color: #fff !important;
+      font-weight: 600;
+      box-shadow: 0 2px 10px rgba(255, 215, 0, 0.45);
+    }
+
+    .calendar-note {
+      margin-top: 20px;
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 12px;
+      font-weight: 300;
+      color: #aaa;
+      letter-spacing: 1px;
+    }
+
+    /* ============================================================
+       4. VENUE SECTION
+    ============================================================ */
+    #venue {
+      background: #fcfcfc;
+      text-align: center;
+    }
+
+    #kakao-map {
+      width: 100%;
+      height: 240px;
+      border-radius: 10px;
+      margin-bottom: 22px;
+      background: #e8edf0;
+    }
+
+    .venue-name {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 16px;
+      font-weight: 400;
+      color: #2c2c2c;
+      margin-bottom: 8px;
+    }
+
+    .venue-address {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 12.5px;
+      font-weight: 300;
+      color: #888;
+      line-height: 1.8;
+      margin-bottom: 24px;
+    }
+
+    .transport-section {
+      text-align: left;
+    }
+
+    .transport-title {
+      font-size: 10.5px;
+      font-weight: 300;
+      color: #bbb;
+      letter-spacing: 4px;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .transport-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 14px;
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 13px;
+      font-weight: 300;
+      color: #555;
+      line-height: 1.65;
+    }
+
+    .transport-icon {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 600;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .t-subway { background: #2ecc71; color: #fff; }
+    .t-bus    { background: #3498db; color: #fff; }
+    .t-car    { background: #e67e22; color: #fff; }
+
+    /* ============================================================
+       5. GALLERY SECTION
+    ============================================================ */
+    #gallery {
+      padding: 52px 0;
+      text-align: center;
+    }
+
+    #gallery .section-label,
+    #gallery .section-title,
+    #gallery .divider {
+      padding: 0 24px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      margin-top: 4px;
+    }
+
+    .gallery-item {
+      overflow: hidden;
+      aspect-ratio: 1 / 1;
+      background: #f0f0f0;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.35s ease;
+    }
+
+    .gallery-item img:active {
+      transform: scale(1.03);
+    }
+
+    /* ============================================================
+       6. CONTACTS SECTION
+    ============================================================ */
+    #contacts {
+      text-align: center;
+    }
+
+    .contact-group {
+      margin-bottom: 28px;
+    }
+
+    .contact-group:last-child {
+      margin-bottom: 0;
+    }
+
+    .contact-group-label {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 14px;
+      font-weight: 400;
+      color: #333;
+      letter-spacing: 2px;
+      margin-bottom: 14px;
+    }
+
+    .contact-btns {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .contact-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 20px;
+      border-radius: 24px;
+      border: 1px solid #e0e0e0;
+      background: #fff;
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 13px;
+      font-weight: 300;
+      color: #555;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.18s, border-color 0.18s;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .contact-btn:active {
+      background: #f8f8f8;
+      border-color: #ddd;
+    }
+
+    /* ============================================================
+       7. ACCOUNTS SECTION
+    ============================================================ */
+    #accounts {
+      background: #fcfcfc;
+      text-align: center;
+    }
+
+    .account-group {
+      margin-bottom: 12px;
+    }
+
+    .account-toggle-btn {
+      width: 100%;
+      padding: 14px 18px;
+      border: 1px solid #ebebeb;
+      border-radius: 8px;
+      background: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 13.5px;
+      font-weight: 300;
+      color: #444;
+      transition: background 0.18s;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .account-toggle-btn:active {
+      background: #f5f5f5;
+    }
+
+    .account-arrow {
+      font-size: 11px;
+      color: #ccc;
+      transition: transform 0.22s;
+      display: inline-block;
+    }
+
+    .account-toggle-btn.open .account-arrow {
+      transform: rotate(180deg);
+    }
+
+    .account-detail {
+      display: none;
+      padding: 16px 18px;
+      border: 1px solid #ebebeb;
+      border-top: none;
+      border-radius: 0 0 8px 8px;
+      background: #fff;
+    }
+
+    .account-detail.open {
+      display: block;
+    }
+
+    .account-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .account-info-text {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 13px;
+      font-weight: 300;
+      color: #666;
+      text-align: left;
+      line-height: 1.7;
+    }
+
+    .account-info-text strong {
+      font-weight: 400;
+      color: #333;
+    }
+
+    .copy-btn {
+      padding: 7px 14px;
+      border-radius: 20px;
+      border: 1px solid #FFD700;
+      background: #fff;
+      color: #c8a800;
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 12px;
+      font-weight: 300;
+      cursor: pointer;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: background 0.18s, color 0.18s;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .copy-btn:active {
+      background: #FFD700;
+      color: #fff;
+    }
+
+    /* ============================================================
+       8. GUESTBOOK SECTION
+    ============================================================ */
+    #guestbook {
+      text-align: center;
+    }
+
+    .gb-form {
+      margin-bottom: 30px;
+    }
+
+    .gb-form input,
+    .gb-form textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #ebebeb;
+      border-radius: 8px;
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 14px;
+      font-weight: 300;
+      color: #444;
+      outline: none;
+      transition: border-color 0.2s;
+      margin-bottom: 10px;
+      background: #fff;
+      -webkit-appearance: none;
+    }
+
+    .gb-form input:focus,
+    .gb-form textarea:focus {
+      border-color: #FFD700;
+    }
+
+    .gb-form textarea {
+      height: 96px;
+      resize: none;
+      line-height: 1.65;
+    }
+
+    .gb-submit {
+      width: 100%;
+      padding: 14px;
+      background: #FFD700;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      cursor: pointer;
+      letter-spacing: 3px;
+      transition: background 0.2s;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .gb-submit:active {
+      background: #e6c200;
+    }
+
+    .gb-list {
+      list-style: none;
+      text-align: left;
+    }
+
+    .gb-item {
+      padding: 16px 0;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .gb-item:last-child {
+      border-bottom: none;
+    }
+
+    .gb-author {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 14px;
+      font-weight: 400;
+      color: #2c2c2c;
+      margin-bottom: 5px;
+    }
+
+    .gb-message {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 13px;
+      font-weight: 300;
+      color: #666;
+      line-height: 1.75;
+      word-break: break-all;
+    }
+
+    .gb-date {
+      font-size: 11px;
+      color: #c0c0c0;
+      margin-top: 7px;
+      font-family: 'Noto Sans KR', sans-serif;
+    }
+
+    .gb-empty {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 13px;
+      font-weight: 300;
+      color: #ccc;
+      padding: 30px 0;
+      text-align: center;
+    }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    footer {
+      padding: 28px 24px 40px;
+      text-align: center;
+      font-family: 'Dancing Script', cursive;
+      font-size: 18px;
+      color: #ddd;
+      background: #fcfcfc;
+      border-top: 1px solid #f0f0f0;
+    }
+
+    /* ============================================================
+       SCROLL FADE-IN
+    ============================================================ */
+    .fade-section {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .fade-section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ============================================================
+       D-DAY BOX
+    ============================================================ */
+    .dday-box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 24px;
+      padding: 18px 24px;
+      border-radius: 12px;
+      background: #fffdf0;
+      border: 1px solid #f5e97a;
+    }
+
+    .dday-label {
+      font-family: 'Dancing Script', cursive;
+      font-size: 20px;
+      color: #FFD700;
+      line-height: 1;
+    }
+
+    .dday-number {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 32px;
+      font-weight: 600;
+      color: #2c2c2c;
+      line-height: 1;
+      letter-spacing: -1px;
+    }
+
+    .dday-sub {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 11px;
+      font-weight: 300;
+      color: #aaa;
+      letter-spacing: 1px;
+      margin-top: 4px;
+      text-align: center;
+    }
+
+    /* ============================================================
+       TOAST
+    ============================================================ */
+    .toast {
+      position: fixed;
+      bottom: 64px;
+      left: 50%;
+      transform: translateX(-50%) translateY(12px);
+      background: rgba(30, 30, 30, 0.78);
+      backdrop-filter: blur(4px);
+      color: #fff;
+      padding: 10px 26px;
+      border-radius: 24px;
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 13px;
+      font-weight: 300;
+      letter-spacing: 1px;
+      opacity: 0;
+      transition: opacity 0.28s ease, transform 0.28s ease;
+      pointer-events: none;
+      z-index: 9999;
+      white-space: nowrap;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+  </style>
+</head>
+<body>
+<div class="wrapper">
+
+  <!-- ====================================================
+       1. INTRO
+  ==================================================== -->
+  <section id="intro">
+    <div class="intro-photo-wrapper" id="intro-photo-wrapper">
+      <img
+        src="images/main.jpg"
+        alt="신랑 신부 사진"
+        class="intro-photo"
+        onerror="this.style.display='none'"
+      >
+      <!-- Bubble particles injected by JS -->
+      <div class="intro-overlay">
+        <span class="wedding-day-text">Wedding Day!</span>
+      </div>
+    </div>
+
+    <div class="intro-info">
+      <div class="intro-names">김재민 &thinsp;|&thinsp; 김미영</div>
+      <div class="intro-date">2026 . 05 . 02 &nbsp; 토요일</div>
+      <div class="intro-venue">개쩌는 웨딩홀</div>
+      <div class="intro-invitation">I N V I T A T I O N</div>
+    </div>
+  </section>
+
+  <!-- ====================================================
+       2. GREETING
+  ==================================================== -->
+  <section id="greeting" class="fade-section">
+    <div class="section-label">Greeting</div>
+    <div class="section-title">인사말</div>
+    <div class="divider"></div>
+    <p class="greeting-text">
+      서로 다른 두 사람이<br>
+      하나가 되는 날,<br>
+      소중한 분들을 모시고<br>
+      작은 결혼식을 올리려 합니다.<br><br>
+      바쁘신 중에도 자리를 빛내 주신다면<br>
+      더없는 기쁨과 영광이 되겠습니다.
+    </p>
+    <p class="greeting-sub">
+      재민 부 &nbsp;·&nbsp; 재민 모 &nbsp;의 아들 &nbsp;<strong style="color:#555;font-weight:400;">재민</strong><br>
+      미영 부 &nbsp;·&nbsp; 미영 모 &nbsp;의 딸 &nbsp;<strong style="color:#555;font-weight:400;">미영</strong>
+    </p>
+  </section>
+
+  <!-- ====================================================
+       3. CALENDAR
+  ==================================================== -->
+  <section id="calendar" class="fade-section">
+    <div class="section-label">Date</div>
+    <div class="section-title">날짜</div>
+    <div class="divider"></div>
+    <div class="calendar-month-label">2026 &nbsp;·&nbsp; MAY</div>
+    <div class="calendar-container">
+      <div class="calendar-grid" id="calendar-grid">
+        <!-- Injected by JS -->
+      </div>
+    </div>
+    <p class="calendar-note">2026년 5월 2일 토요일 오후 xx시</p>
+    <div class="dday-box" id="dday-box">
+      <div>
+        <div class="dday-label" id="dday-label">D-</div>
+        <div class="dday-sub" id="dday-sub"></div>
+      </div>
+      <div class="dday-number" id="dday-number">…</div>
+    </div>
+  </section>
+
+  <!-- ====================================================
+       4. VENUE
+  ==================================================== -->
+  <section id="venue" class="fade-section">
+    <div class="section-label">Location</div>
+    <div class="section-title">오시는 길</div>
+    <div class="divider"></div>
+
+    <div id="kakao-map"></div>
+
+    <div class="venue-name">개쩌는 웨딩홀</div>
+    <div class="venue-address">
+      서울특별시 개쩌는 웨딩홀 주소<br>
+      TEL. 02-000-0000 &nbsp;|&nbsp; 주차 가능
+    </div>
+
+    <div class="transport-section">
+      <div class="transport-title">T R A N S P O R T</div>
+      <div class="transport-item">
+        <div class="transport-icon t-subway">지하</div>
+        <div>X호선 XX역 X번 출구에서 도보 약 5분</div>
+      </div>
+      <div class="transport-item">
+        <div class="transport-icon t-bus">버스</div>
+        <div>XX번, XX번 탑승 후 XX 정류장 하차</div>
+      </div>
+      <div class="transport-item">
+        <div class="transport-icon t-car">주차</div>
+        <div>건물 지하 1~3층 주차 가능 (2시간 무료)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================
+       5. GALLERY
+  ==================================================== -->
+  <section id="gallery" class="fade-section">
+    <div class="section-label">Gallery</div>
+    <div class="section-title">갤러리</div>
+    <div class="divider"></div>
+    <div class="gallery-grid">
+      <div class="gallery-item"><img src="images/main.jpg" alt="웨딩 사진 1" onerror="this.parentElement.style.display='none'"></div>
+      <div class="gallery-item"><img src="images/photo2.jpg" alt="웨딩 사진 2" onerror="this.src='images/main.jpg'"></div>
+      <div class="gallery-item"><img src="images/photo3.jpg" alt="웨딩 사진 3" onerror="this.src='images/main.jpg'"></div>
+      <div class="gallery-item"><img src="images/photo4.jpg" alt="웨딩 사진 4" onerror="this.src='images/main.jpg'"></div>
+      <div class="gallery-item"><img src="images/photo5.jpg" alt="웨딩 사진 5" onerror="this.src='images/main.jpg'"></div>
+      <div class="gallery-item"><img src="images/photo6.jpg" alt="웨딩 사진 6" onerror="this.src='images/main.jpg'"></div>
+      <div class="gallery-item"><img src="images/photo7.jpg" alt="웨딩 사진 7" onerror="this.src='images/main.jpg'"></div>
+      <div class="gallery-item"><img src="images/photo8.jpg" alt="웨딩 사진 8" onerror="this.src='images/main.jpg'"></div>
+      <div class="gallery-item"><img src="images/photo9.jpg" alt="웨딩 사진 9" onerror="this.src='images/main.jpg'"></div>
+    </div>
+  </section>
+
+  <!-- ====================================================
+       6. CONTACTS
+  ==================================================== -->
+  <section id="contacts" class="fade-section">
+    <div class="section-label">Contact</div>
+    <div class="section-title">연락처</div>
+    <div class="divider"></div>
+
+    <div class="contact-group">
+      <div class="contact-group-label">신랑 &nbsp;|&nbsp; 신부</div>
+      <div class="contact-btns">
+        <a href="tel:010-xxxx-xxxx" class="contact-btn">
+          <span>📞</span> 신랑 김재민
+        </a>
+        <a href="tel:010-yyyy-yyyy" class="contact-btn">
+          <span>📞</span> 신부 김미영
+        </a>
+      </div>
+    </div>
+
+    <div class="contact-group">
+      <div class="contact-group-label">신랑측 혼주</div>
+      <div class="contact-btns">
+        <a href="tel:010-zzzz-zzzz" class="contact-btn">
+          <span>📞</span> 재민 부·모
+        </a>
+      </div>
+    </div>
+
+    <div class="contact-group">
+      <div class="contact-group-label">신부측 혼주</div>
+      <div class="contact-btns">
+        <a href="tel:010-kkkk-kkkk" class="contact-btn">
+          <span>📞</span> 미영 부·모
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================
+       7. ACCOUNTS
+  ==================================================== -->
+  <section id="accounts" class="fade-section">
+    <div class="section-label">Gift</div>
+    <div class="section-title">축의금 계좌</div>
+    <div class="divider"></div>
+
+    <!-- 신랑측 -->
+    <div class="account-group">
+      <button class="account-toggle-btn" onclick="toggleAccount(this)" aria-expanded="false">
+        <span>💛 신랑측 계좌번호</span>
+        <span class="account-arrow">▼</span>
+      </button>
+      <div class="account-detail">
+        <div class="account-row">
+          <div class="account-info-text">
+            <strong>병주은행</strong><br>
+            김재민 &nbsp;·&nbsp; 1234-56-789012
+          </div>
+          <button class="copy-btn" onclick="copyAccount('병주은행 김재민 1234-56-789012')">복사</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 신부측 -->
+    <div class="account-group">
+      <button class="account-toggle-btn" onclick="toggleAccount(this)" aria-expanded="false">
+        <span>💛 신부측 계좌번호</span>
+        <span class="account-arrow">▼</span>
+      </button>
+      <div class="account-detail">
+        <div class="account-row">
+          <div class="account-info-text">
+            <strong>병주은행</strong><br>
+            김미영 &nbsp;·&nbsp; 1234-56-789012
+          </div>
+          <button class="copy-btn" onclick="copyAccount('병주은행 김미영 1234-56-789012')">복사</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================
+       8. GUESTBOOK
+  ==================================================== -->
+  <section id="guestbook" class="fade-section">
+    <div class="section-label">Guestbook</div>
+    <div class="section-title">방명록</div>
+    <div class="divider"></div>
+
+    <div class="gb-form">
+      <input type="text" id="gb-name" placeholder="이름" maxlength="20" autocomplete="off">
+      <textarea id="gb-message" placeholder="따뜻한 축하 메시지를 남겨주세요 💌" maxlength="200"></textarea>
+      <button class="gb-submit" onclick="submitGuestbook()">등 록 하 기</button>
+    </div>
+
+    <ul class="gb-list" id="gb-list">
+      <li class="gb-empty">첫 번째 방명록을 남겨주세요 💛</li>
+    </ul>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    김재민 ♥ 김미영
+  </footer>
+
+</div><!-- /.wrapper -->
+
+<!-- Toast -->
+<div class="toast" id="toast">복사되었습니다</div>
+
+
+<!-- ====================================================
+     FIREBASE MODULE SCRIPT
+==================================================== -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js";
+  import {
+    getFirestore,
+    collection,
+    addDoc,
+    query,
+    orderBy,
+    onSnapshot,
+    serverTimestamp
+  } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyD28FK1BeehcS8cizoSEdtTbkZpICdm9n0",
+    authDomain: "jmmobliewedding.firebaseapp.com",
+    projectId: "jmmobliewedding",
+    storageBucket: "jmmobliewedding.firebasestorage.app",
+    messagingSenderId: "470765717194",
+    appId: "1:470765717194:web:e31d9b9eeaa4a6aaa41633"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db  = getFirestore(app);
+  const col = collection(db, 'guestbook');
+
+  /* ── Real-time listener ── */
+  const q = query(col, orderBy('createdAt', 'desc'));
+  onSnapshot(q, (snapshot) => {
+    const list = document.getElementById('gb-list');
+    if (snapshot.empty) {
+      list.innerHTML = '<li class="gb-empty">첫 번째 방명록을 남겨주세요 💛</li>';
+      return;
+    }
+    list.innerHTML = '';
+    snapshot.forEach((doc) => {
+      const d    = doc.data();
+      const date = d.createdAt ? new Date(d.createdAt.seconds * 1000) : new Date();
+      const ds   = `${date.getFullYear()}.${pad(date.getMonth() + 1)}.${pad(date.getDate())}`;
+      const li   = document.createElement('li');
+      li.className = 'gb-item';
+      li.innerHTML = `
+        <div class="gb-author">${esc(d.name)}</div>
+        <div class="gb-message">${esc(d.message)}</div>
+        <div class="gb-date">${ds}</div>
+      `;
+      list.appendChild(li);
+    });
+  });
+
+  /* ── Submit (exposed globally) ── */
+  window._firebaseSubmit = async (name, message) => {
+    await addDoc(col, { name, message, createdAt: serverTimestamp() });
+  };
+
+  function esc(s) {
+    return String(s)
+      .replace(/&/g,  '&amp;')
+      .replace(/</g,  '&lt;')
+      .replace(/>/g,  '&gt;')
+      .replace(/"/g,  '&quot;')
+      .replace(/'/g,  '&#039;');
+  }
+  function pad(n) { return String(n).padStart(2, '0'); }
+</script>
+
+
+<!-- ====================================================
+     MAIN SCRIPT
+==================================================== -->
+<script>
+
+  /* ─────────────────────────────────────────
+     CALENDAR – May 2025
+     May 1, 2025 = Thursday (index 4, 0=Sun)
+  ───────────────────────────────────────── */
+  (function buildCalendar() {
+    const grid         = document.getElementById('calendar-grid');
+    const dayNames     = ['일', '월', '화', '수', '목', '금', '토'];
+    const firstDow     = 5;   // Friday (May 1, 2026)
+    const totalDays    = 31;
+    const highlightDay = 2;   // May 2
+
+    dayNames.forEach((name, i) => {
+      const el = document.createElement('div');
+      el.className = 'cal-header' + (i === 0 ? ' sun' : i === 6 ? ' sat' : '');
+      el.textContent = name;
+      grid.appendChild(el);
+    });
+
+    for (let i = 0; i < firstDow; i++) {
+      const el = document.createElement('div');
+      el.className = 'cal-day empty';
+      el.textContent = '';
+      grid.appendChild(el);
+    }
+
+    for (let d = 1; d <= totalDays; d++) {
+      const dow = (firstDow + d - 1) % 7;
+      const el  = document.createElement('div');
+      let cls   = 'cal-day';
+      if (dow === 0) cls += ' sun';
+      if (dow === 6) cls += ' sat';
+      if (d === highlightDay) cls += ' highlight';
+      el.className   = cls;
+      el.textContent = d;
+      grid.appendChild(el);
+    }
+  })();
+
+
+  /* ─────────────────────────────────────────
+     BUBBLE PARTICLES
+  ───────────────────────────────────────── */
+  (function spawnBubbles() {
+    const wrapper = document.getElementById('intro-photo-wrapper');
+    const count   = 16;
+    for (let i = 0; i < count; i++) {
+      const b    = document.createElement('div');
+      b.className = 'bubble';
+      const size = (Math.random() * 28 + 8).toFixed(1);
+      const left = (Math.random() * 88 + 6).toFixed(1);
+      const bot  = (Math.random() * 25).toFixed(1);
+      const dur  = (Math.random() * 5 + 5).toFixed(1);
+      const del  = (Math.random() * 6).toFixed(1);
+      b.style.cssText = `
+        width:${size}px; height:${size}px;
+        left:${left}%;
+        bottom:${bot}%;
+        animation-duration:${dur}s;
+        animation-delay:${del}s;
+      `;
+      wrapper.appendChild(b);
+    }
+  })();
+
+
+  /* ─────────────────────────────────────────
+     SCROLL FADE-IN (IntersectionObserver)
+  ───────────────────────────────────────── */
+  (function () {
+    const targets = document.querySelectorAll('.fade-section');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    targets.forEach((el) => observer.observe(el));
+  })();
+
+
+  /* ─────────────────────────────────────────
+     D-DAY COUNTER
+  ───────────────────────────────────────── */
+  (function () {
+    const WEDDING = new Date('2026-05-02T00:00:00');
+    const today   = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    const diff = Math.round((WEDDING - today) / (1000 * 60 * 60 * 24));
+
+    const labelEl  = document.getElementById('dday-label');
+    const numberEl = document.getElementById('dday-number');
+    const subEl    = document.getElementById('dday-sub');
+
+    if (diff > 0) {
+      labelEl.textContent  = 'D -';
+      numberEl.textContent = diff.toLocaleString();
+      subEl.textContent    = '결혼식까지 ' + diff + '일 남았습니다';
+    } else if (diff === 0) {
+      labelEl.textContent  = '🎊';
+      numberEl.textContent = 'D · Day';
+      subEl.textContent    = '오늘이 바로 결혼식 날입니다!';
+      document.getElementById('dday-box').style.background = '#fff8e1';
+    } else {
+      labelEl.textContent  = 'D +';
+      numberEl.textContent = Math.abs(diff).toLocaleString();
+      subEl.textContent    = '결혼한 지 ' + Math.abs(diff) + '일이 지났습니다 💛';
+    }
+  })();
+
+
+  /* ─────────────────────────────────────────
+     KAKAO MAP
+  ───────────────────────────────────────── */
+  function initKakaoMap() {
+    /* ★ 실제 웨딩홀 좌표로 교체하세요 (현재: 서울시청 기준) */
+    const LAT = 37.5663;
+    const LNG = 126.9779;
+    const container = document.getElementById('kakao-map');
+    const map = new kakao.maps.Map(container, {
+      center: new kakao.maps.LatLng(LAT, LNG),
+      level: 3
+    });
+    const marker = new kakao.maps.Marker({
+      map:      map,
+      position: new kakao.maps.LatLng(LAT, LNG)
+    });
+    const iw = new kakao.maps.InfoWindow({
+      content: '<div style="padding:6px 12px;font-size:12px;font-weight:500;white-space:nowrap;">개쩌는 웨딩홀</div>'
+    });
+    iw.open(map, marker);
+  }
+
+  function showMapFallback() {
+    const container = document.getElementById('kakao-map');
+    /* ★ 실제 웨딩홀 카카오맵 URL로 교체하세요 */
+    const kakaoMapUrl = 'https://map.kakao.com/link/search/개쩌는웨딩홀';
+    container.style.cssText = 'display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:#f5f8fa;border-radius:10px;';
+    container.innerHTML = `
+      <div style="font-size:28px;">🗺️</div>
+      <div style="font-family:\'Noto Sans KR\',sans-serif;font-size:13px;font-weight:300;color:#888;text-align:center;line-height:1.6;">
+        지도를 불러오려면 카카오 개발자 콘솔에서<br><strong style="font-weight:400;color:#555;">localhost</strong> 도메인을 등록해 주세요.
+      </div>
+      <a href="${kakaoMapUrl}" target="_blank"
+         style="padding:9px 20px;border-radius:20px;border:1px solid #FFD700;color:#c8a800;font-family:\'Noto Sans KR\',sans-serif;font-size:12px;font-weight:300;text-decoration:none;">
+        카카오맵으로 보기
+      </a>
+    `;
+  }
+
+  window.addEventListener('load', function () {
+    if (typeof kakao !== 'undefined') {
+      kakao.maps.load(initKakaoMap);
+    } else {
+      showMapFallback();
+    }
+  });
+
+
+  /* ─────────────────────────────────────────
+     ACCOUNT TOGGLE
+  ───────────────────────────────────────── */
+  function toggleAccount(btn) {
+    const isOpen = btn.classList.toggle('open');
+    btn.setAttribute('aria-expanded', isOpen);
+    btn.nextElementSibling.classList.toggle('open', isOpen);
+  }
+
+
+  /* ─────────────────────────────────────────
+     COPY ACCOUNT NUMBER
+  ───────────────────────────────────────── */
+  function copyAccount(text) {
+    const doToast = () => showToast('복사되었습니다');
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(text).then(doToast).catch(() => fallbackCopy(text, doToast));
+    } else {
+      fallbackCopy(text, doToast);
+    }
+  }
+
+  function fallbackCopy(text, cb) {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.cssText = 'position:fixed;opacity:0;top:0;left:0;';
+    document.body.appendChild(ta);
+    ta.focus();
+    ta.select();
+    try { document.execCommand('copy'); cb(); } catch (e) {}
+    document.body.removeChild(ta);
+  }
+
+
+  /* ─────────────────────────────────────────
+     TOAST
+  ───────────────────────────────────────── */
+  function showToast(msg) {
+    const el = document.getElementById('toast');
+    el.textContent = msg || '완료';
+    el.classList.add('show');
+    clearTimeout(el._timer);
+    el._timer = setTimeout(() => el.classList.remove('show'), 2200);
+  }
+
+
+  /* ─────────────────────────────────────────
+     GUESTBOOK SUBMIT
+  ───────────────────────────────────────── */
+  async function submitGuestbook() {
+    const nameEl = document.getElementById('gb-name');
+    const msgEl  = document.getElementById('gb-message');
+    const name   = nameEl.value.trim();
+    const msg    = msgEl.value.trim();
+
+    if (!name)   { alert('이름을 입력해주세요.'); nameEl.focus(); return; }
+    if (!msg)    { alert('메시지를 입력해주세요.'); msgEl.focus(); return; }
+
+    const btn = document.querySelector('.gb-submit');
+    btn.disabled = true;
+    btn.textContent = '등록 중...';
+
+    try {
+      if (typeof window._firebaseSubmit === 'function') {
+        await window._firebaseSubmit(name, msg);
+        nameEl.value = '';
+        msgEl.value  = '';
+        showToast('방명록이 등록되었습니다 💛');
+      } else {
+        alert('잠시 후 다시 시도해주세요.');
+      }
+    } catch (e) {
+      console.error(e);
+      alert('등록에 실패했습니다. 다시 시도해주세요.');
+    } finally {
+      btn.disabled    = false;
+      btn.textContent = '등 록 하 기';
+    }
+  }
+
+</script>
+</body>
+</html>
