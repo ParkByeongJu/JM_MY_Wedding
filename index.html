@@ -404,11 +404,95 @@
       height: 100%;
       object-fit: cover;
       display: block;
+      cursor: pointer;
       transition: transform 0.35s ease;
     }
 
     .gallery-item img:active {
       transform: scale(1.03);
+    }
+
+    /* ============================================================
+       LIGHTBOX
+    ============================================================ */
+    .lightbox-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.93);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+      touch-action: none;
+    }
+
+    .lightbox-overlay.active {
+      display: flex;
+    }
+
+    .lightbox-img {
+      max-width: 92vw;
+      max-height: 78vh;
+      object-fit: contain;
+      border-radius: 4px;
+      display: block;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 14px;
+      right: 18px;
+      color: #fff;
+      font-size: 32px;
+      line-height: 1;
+      cursor: pointer;
+      opacity: 0.8;
+      z-index: 10;
+      background: none;
+      border: none;
+      padding: 4px 10px;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .lightbox-close:hover { opacity: 1; }
+
+    .lightbox-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.14);
+      color: #fff;
+      font-size: 28px;
+      border: none;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+      transition: background 0.2s;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .lightbox-arrow:hover  { background: rgba(255, 255, 255, 0.28); }
+    .lightbox-arrow.prev   { left: 14px; }
+    .lightbox-arrow.next   { right: 14px; }
+
+    .lightbox-counter {
+      position: absolute;
+      bottom: 22px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: rgba(255, 255, 255, 0.55);
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 13px;
+      font-weight: 300;
+      letter-spacing: 1px;
+      white-space: nowrap;
     }
 
     /* ============================================================
@@ -703,9 +787,10 @@
     ============================================================ */
     .dday-box {
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 16px;
+      gap: 6px;
       margin-top: 24px;
       padding: 18px 24px;
       border-radius: 12px;
@@ -713,18 +798,25 @@
       border: 1px solid #f5e97a;
     }
 
+    .dday-main {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+
     .dday-label {
       font-family: 'Dancing Script', cursive;
-      font-size: 20px;
+      font-size: 38px;
+      font-weight: 700;
       color: #FFD700;
       line-height: 1;
     }
 
     .dday-number {
-      font-family: 'Noto Serif KR', serif;
-      font-size: 32px;
-      font-weight: 600;
-      color: #2c2c2c;
+      font-family: 'Dancing Script', cursive;
+      font-size: 38px;
+      font-weight: 700;
+      color: #FFD700;
       line-height: 1;
       letter-spacing: -1px;
     }
@@ -735,9 +827,147 @@
       font-weight: 300;
       color: #aaa;
       letter-spacing: 1px;
-      margin-top: 4px;
       text-align: center;
     }
+
+    /* ============================================================
+       GUESTBOOK DELETE BUTTON
+    ============================================================ */
+    .gb-item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 5px;
+    }
+
+    .gb-delete-btn {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 11px;
+      font-weight: 300;
+      color: #ccc;
+      background: none;
+      border: 1px solid #ebebeb;
+      border-radius: 10px;
+      padding: 2px 10px;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: color 0.18s, border-color 0.18s;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .gb-delete-btn:active {
+      color: #e05252;
+      border-color: #e05252;
+    }
+
+    /* ============================================================
+       PASSWORD MODAL
+    ============================================================ */
+    .pw-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.22s ease;
+    }
+
+    .pw-modal.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .pw-modal-box {
+      background: #fff;
+      border-radius: 14px;
+      padding: 28px 24px 20px;
+      width: calc(100% - 64px);
+      max-width: 300px;
+      text-align: center;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+      transform: translateY(10px) scale(0.97);
+      transition: transform 0.22s ease;
+    }
+
+    .pw-modal.show .pw-modal-box {
+      transform: translateY(0) scale(1);
+    }
+
+    .pw-modal-title {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 15px;
+      font-weight: 400;
+      color: #2c2c2c;
+      margin-bottom: 6px;
+    }
+
+    .pw-modal-desc {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 12px;
+      font-weight: 300;
+      color: #bbb;
+      margin-bottom: 16px;
+      letter-spacing: 0.5px;
+    }
+
+    .pw-modal-input {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1px solid #e8e8e8;
+      border-radius: 8px;
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 15px;
+      font-weight: 300;
+      color: #444;
+      outline: none;
+      margin-bottom: 14px;
+      transition: border-color 0.2s;
+      -webkit-appearance: none;
+      text-align: center;
+      letter-spacing: 4px;
+    }
+
+    .pw-modal-input:focus {
+      border-color: #FFD700;
+    }
+
+    .pw-modal-btns {
+      display: flex;
+      gap: 8px;
+    }
+
+    .pw-cancel-btn,
+    .pw-confirm-btn {
+      flex: 1;
+      padding: 11px;
+      border-radius: 8px;
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 13px;
+      font-weight: 300;
+      cursor: pointer;
+      transition: background 0.18s, color 0.18s;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .pw-cancel-btn {
+      background: #fff;
+      color: #888;
+      border: 1px solid #e8e8e8;
+    }
+
+    .pw-cancel-btn:active { background: #f5f5f5; }
+
+    .pw-confirm-btn {
+      background: #e05252;
+      color: #fff;
+      border: 1px solid #e05252;
+    }
+
+    .pw-confirm-btn:active { background: #c84040; }
 
     /* ============================================================
        TOAST
@@ -778,7 +1008,7 @@
   <section id="intro">
     <div class="intro-photo-wrapper" id="intro-photo-wrapper">
       <img
-        src="images/main.jpg"
+        src="images/gallery0.jpg"
         alt="신랑 신부 사진"
         class="intro-photo"
         onerror="this.style.display='none'"
@@ -833,11 +1063,11 @@
     </div>
     <p class="calendar-note">2026년 5월 2일 토요일 오후 xx시</p>
     <div class="dday-box" id="dday-box">
-      <div>
-        <div class="dday-label" id="dday-label">D-</div>
-        <div class="dday-sub" id="dday-sub"></div>
+      <div class="dday-main">
+        <span class="dday-label" id="dday-label">D -</span>
+        <span class="dday-number" id="dday-number">…</span>
       </div>
-      <div class="dday-number" id="dday-number">…</div>
+      <div class="dday-sub" id="dday-sub"></div>
     </div>
   </section>
 
@@ -882,7 +1112,16 @@
     <div class="section-title">갤러리</div>
     <div class="divider"></div>
     <div class="gallery-grid">
-      <div class="gallery-item"><img src="images/main.jpg" alt="웨딩 사진 1" onerror="this.parentElement.style.display='none'"></div>
+      <div class="gallery-item"><img src="images/gallery1.jpg" alt="웨딩 사진 1"></div>
+      <div class="gallery-item"><img src="images/gallery2.jpg" alt="웨딩 사진 2"></div>
+      <div class="gallery-item"><img src="images/gallery3.jpg" alt="웨딩 사진 3"></div>
+      <div class="gallery-item"><img src="images/gallery4.jpg" alt="웨딩 사진 4"></div>
+      <div class="gallery-item"><img src="images/gallery5.jpg" alt="웨딩 사진 5"></div>
+      <div class="gallery-item"><img src="images/gallery6.jpg" alt="웨딩 사진 6"></div>
+      <div class="gallery-item"><img src="images/gallery7.jpg" alt="웨딩 사진 7"></div>
+      <div class="gallery-item"><img src="images/gallery8.jpg" alt="웨딩 사진 8"></div>
+      <div class="gallery-item"><img src="images/gallery9.jpg" alt="웨딩 사진 9"></div>
+      <!-- <div class="gallery-item"><img src="images/gallery1.jpg" alt="웨딩 사진 1" onerror="this.parentElement.style.display='none'"></div>
       <div class="gallery-item"><img src="images/photo2.jpg" alt="웨딩 사진 2" onerror="this.src='images/main.jpg'"></div>
       <div class="gallery-item"><img src="images/photo3.jpg" alt="웨딩 사진 3" onerror="this.src='images/main.jpg'"></div>
       <div class="gallery-item"><img src="images/photo4.jpg" alt="웨딩 사진 4" onerror="this.src='images/main.jpg'"></div>
@@ -890,7 +1129,7 @@
       <div class="gallery-item"><img src="images/photo6.jpg" alt="웨딩 사진 6" onerror="this.src='images/main.jpg'"></div>
       <div class="gallery-item"><img src="images/photo7.jpg" alt="웨딩 사진 7" onerror="this.src='images/main.jpg'"></div>
       <div class="gallery-item"><img src="images/photo8.jpg" alt="웨딩 사진 8" onerror="this.src='images/main.jpg'"></div>
-      <div class="gallery-item"><img src="images/photo9.jpg" alt="웨딩 사진 9" onerror="this.src='images/main.jpg'"></div>
+      <div class="gallery-item"><img src="images/photo9.jpg" alt="웨딩 사진 9" onerror="this.src='images/main.jpg'"></div> -->
     </div>
   </section>
 
@@ -905,10 +1144,10 @@
     <div class="contact-group">
       <div class="contact-group-label">신랑 &nbsp;|&nbsp; 신부</div>
       <div class="contact-btns">
-        <a href="tel:010-xxxx-xxxx" class="contact-btn">
+        <a href="tel:010-6380-4906" class="contact-btn">
           <span>📞</span> 신랑 김재민
         </a>
-        <a href="tel:010-yyyy-yyyy" class="contact-btn">
+        <a href="tel:010-6380-4906" class="contact-btn">
           <span>📞</span> 신부 김미영
         </a>
       </div>
@@ -917,8 +1156,11 @@
     <div class="contact-group">
       <div class="contact-group-label">신랑측 혼주</div>
       <div class="contact-btns">
-        <a href="tel:010-zzzz-zzzz" class="contact-btn">
-          <span>📞</span> 재민 부·모
+        <a href="tel:010-6380-4906" class="contact-btn">
+          <span>📞</span> 재민 아버지
+        </a>
+        <a href="tel:010-6380-4906" class="contact-btn">
+          <span>📞</span> 재민 어머니
         </a>
       </div>
     </div>
@@ -926,8 +1168,11 @@
     <div class="contact-group">
       <div class="contact-group-label">신부측 혼주</div>
       <div class="contact-btns">
-        <a href="tel:010-kkkk-kkkk" class="contact-btn">
-          <span>📞</span> 미영 부·모
+        <a href="tel:010-6380-4906" class="contact-btn">
+          <span>📞</span> 미영 아버지
+        </a>
+        <a href="tel:010-6380-4906" class="contact-btn">
+          <span>📞</span> 미영 어머니
         </a>
       </div>
     </div>
@@ -987,6 +1232,7 @@
     <div class="gb-form">
       <input type="text" id="gb-name" placeholder="이름" maxlength="20" autocomplete="off">
       <textarea id="gb-message" placeholder="따뜻한 축하 메시지를 남겨주세요 💌" maxlength="200"></textarea>
+      <input type="password" id="gb-password" placeholder="비밀번호 (삭제 시 필요)" maxlength="20" autocomplete="new-password">
       <button class="gb-submit" onclick="submitGuestbook()">등 록 하 기</button>
     </div>
 
@@ -1005,6 +1251,29 @@
 <!-- Toast -->
 <div class="toast" id="toast">복사되었습니다</div>
 
+<!-- Password Modal -->
+<div class="pw-modal" id="pw-modal">
+  <div class="pw-modal-box">
+    <div class="pw-modal-title">댓글 삭제</div>
+    <div class="pw-modal-desc">작성 시 입력한 비밀번호를 입력하세요</div>
+    <input type="password" class="pw-modal-input" id="pw-modal-input" placeholder="● ● ● ●" maxlength="20">
+    <div class="pw-modal-btns">
+      <button class="pw-cancel-btn" onclick="cancelDelete()">취소</button>
+      <button class="pw-confirm-btn" onclick="confirmDelete()">삭제</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- Lightbox -->
+<div class="lightbox-overlay" id="lightbox">
+  <button class="lightbox-close" id="lightbox-close">✕</button>
+  <button class="lightbox-arrow prev" id="lightbox-prev">&#8249;</button>
+  <img class="lightbox-img" id="lightbox-img" src="" alt="웨딩 갤러리">
+  <button class="lightbox-arrow next" id="lightbox-next">&#8250;</button>
+  <div class="lightbox-counter" id="lightbox-counter"></div>
+</div>
+
 
 <!-- ====================================================
      FIREBASE MODULE SCRIPT
@@ -1015,6 +1284,9 @@
     getFirestore,
     collection,
     addDoc,
+    deleteDoc,
+    doc,
+    getDoc,
     query,
     orderBy,
     onSnapshot,
@@ -1043,14 +1315,17 @@
       return;
     }
     list.innerHTML = '';
-    snapshot.forEach((doc) => {
-      const d    = doc.data();
+    snapshot.forEach((docSnap) => {
+      const d    = docSnap.data();
       const date = d.createdAt ? new Date(d.createdAt.seconds * 1000) : new Date();
       const ds   = `${date.getFullYear()}.${pad(date.getMonth() + 1)}.${pad(date.getDate())}`;
       const li   = document.createElement('li');
       li.className = 'gb-item';
       li.innerHTML = `
-        <div class="gb-author">${esc(d.name)}</div>
+        <div class="gb-item-header">
+          <div class="gb-author">${esc(d.name)}</div>
+          <button class="gb-delete-btn" onclick="promptDelete('${docSnap.id}')">삭제</button>
+        </div>
         <div class="gb-message">${esc(d.message)}</div>
         <div class="gb-date">${ds}</div>
       `;
@@ -1059,8 +1334,18 @@
   });
 
   /* ── Submit (exposed globally) ── */
-  window._firebaseSubmit = async (name, message) => {
-    await addDoc(col, { name, message, createdAt: serverTimestamp() });
+  window._firebaseSubmit = async (name, message, passwordHash) => {
+    await addDoc(col, { name, message, passwordHash, createdAt: serverTimestamp() });
+  };
+
+  /* ── Delete with password check (exposed globally) ── */
+  window._firebaseDelete = async (docId, inputHash) => {
+    const docRef  = doc(db, 'guestbook', docId);
+    const docSnap = await getDoc(docRef);
+    if (!docSnap.exists()) throw new Error('not_found');
+    const stored = docSnap.data().passwordHash;
+    if (!stored || stored !== inputHash) throw new Error('wrong_password');
+    await deleteDoc(docRef);
   };
 
   function esc(s) {
@@ -1290,24 +1575,35 @@
   /* ─────────────────────────────────────────
      GUESTBOOK SUBMIT
   ───────────────────────────────────────── */
+  /* ── SHA-256 해시 ── */
+  async function hashPassword(pw) {
+    const buf  = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(pw));
+    return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+  }
+
   async function submitGuestbook() {
     const nameEl = document.getElementById('gb-name');
     const msgEl  = document.getElementById('gb-message');
+    const pwEl   = document.getElementById('gb-password');
     const name   = nameEl.value.trim();
     const msg    = msgEl.value.trim();
+    const pw     = pwEl.value.trim();
 
-    if (!name)   { alert('이름을 입력해주세요.'); nameEl.focus(); return; }
-    if (!msg)    { alert('메시지를 입력해주세요.'); msgEl.focus(); return; }
+    if (!name) { alert('이름을 입력해주세요.');     nameEl.focus(); return; }
+    if (!msg)  { alert('메시지를 입력해주세요.');   msgEl.focus();  return; }
+    if (!pw)   { alert('비밀번호를 입력해주세요.'); pwEl.focus();   return; }
 
     const btn = document.querySelector('.gb-submit');
-    btn.disabled = true;
+    btn.disabled    = true;
     btn.textContent = '등록 중...';
 
     try {
       if (typeof window._firebaseSubmit === 'function') {
-        await window._firebaseSubmit(name, msg);
+        const hash = await hashPassword(pw);
+        await window._firebaseSubmit(name, msg, hash);
         nameEl.value = '';
         msgEl.value  = '';
+        pwEl.value   = '';
         showToast('방명록이 등록되었습니다 💛');
       } else {
         alert('잠시 후 다시 시도해주세요.');
@@ -1320,6 +1616,131 @@
       btn.textContent = '등 록 하 기';
     }
   }
+
+  /* ── 삭제 모달 ── */
+  let _deleteTargetId = null;
+
+  function promptDelete(docId) {
+    _deleteTargetId = docId;
+    const modal = document.getElementById('pw-modal');
+    const input = document.getElementById('pw-modal-input');
+    input.value = '';
+    modal.classList.add('show');
+    setTimeout(() => input.focus(), 220);
+  }
+
+  function cancelDelete() {
+    _deleteTargetId = null;
+    document.getElementById('pw-modal').classList.remove('show');
+    document.getElementById('pw-modal-input').value = '';
+  }
+
+  async function confirmDelete() {
+    const input = document.getElementById('pw-modal-input');
+    const pw    = input.value.trim();
+    if (!pw) { input.focus(); return; }
+
+    const btn = document.querySelector('.pw-confirm-btn');
+    btn.disabled    = true;
+    btn.textContent = '삭제 중...';
+
+    try {
+      const hash = await hashPassword(pw);
+      await window._firebaseDelete(_deleteTargetId, hash);
+      cancelDelete();
+      showToast('삭제되었습니다');
+    } catch (e) {
+      if (e.message === 'wrong_password') {
+        input.value = '';
+        input.focus();
+        input.style.borderColor = '#e05252';
+        setTimeout(() => input.style.borderColor = '', 1200);
+        showToast('비밀번호가 틀렸습니다 ✕');
+      } else {
+        alert('삭제에 실패했습니다. 다시 시도해주세요.');
+      }
+    } finally {
+      btn.disabled    = false;
+      btn.textContent = '삭제';
+    }
+  }
+
+  /* 모달 외부 클릭 시 닫기 */
+  document.getElementById('pw-modal').addEventListener('click', function (e) {
+    if (e.target === this) cancelDelete();
+  });
+
+
+  /* ─────────────────────────────────────────
+     GALLERY LIGHTBOX
+  ───────────────────────────────────────── */
+  (function () {
+    const galleryImgs = Array.from(document.querySelectorAll('.gallery-item img'));
+    let currentIdx = 0;
+
+    /* 각 갤러리 이미지에 클릭 핸들러 등록 */
+    galleryImgs.forEach(function (img, idx) {
+      img.addEventListener('click', function () { openLightbox(idx); });
+    });
+
+    function openLightbox(idx) {
+      currentIdx = idx;
+      const lb      = document.getElementById('lightbox');
+      const imgEl   = document.getElementById('lightbox-img');
+      const counter = document.getElementById('lightbox-counter');
+      imgEl.src           = galleryImgs[idx].src;
+      counter.textContent = (idx + 1) + ' / ' + galleryImgs.length;
+      lb.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function moveLightbox(dir) {
+      currentIdx = (currentIdx + dir + galleryImgs.length) % galleryImgs.length;
+      openLightbox(currentIdx);
+    }
+
+    /* 배경 클릭 시 닫기 */
+    document.getElementById('lightbox').addEventListener('click', function (e) {
+      if (e.target === this) closeLightbox();
+    });
+
+    /* X 버튼 */
+    document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
+
+    /* 화살표 버튼 */
+    document.getElementById('lightbox-prev').addEventListener('click', function (e) {
+      e.stopPropagation();
+      moveLightbox(-1);
+    });
+    document.getElementById('lightbox-next').addEventListener('click', function (e) {
+      e.stopPropagation();
+      moveLightbox(1);
+    });
+
+    /* 키보드 방향키 / ESC */
+    document.addEventListener('keydown', function (e) {
+      const lb = document.getElementById('lightbox');
+      if (!lb.classList.contains('active')) return;
+      if (e.key === 'ArrowLeft')  moveLightbox(-1);
+      if (e.key === 'ArrowRight') moveLightbox(1);
+      if (e.key === 'Escape')     closeLightbox();
+    });
+
+    /* 모바일 스와이프 지원 */
+    let touchStartX = 0;
+    document.getElementById('lightbox').addEventListener('touchstart', function (e) {
+      touchStartX = e.changedTouches[0].clientX;
+    }, { passive: true });
+    document.getElementById('lightbox').addEventListener('touchend', function (e) {
+      const dx = e.changedTouches[0].clientX - touchStartX;
+      if (Math.abs(dx) > 50) moveLightbox(dx < 0 ? 1 : -1);
+    }, { passive: true });
+  })();
 
 </script>
 </body>
