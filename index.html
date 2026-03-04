@@ -510,6 +510,42 @@
     }
 
     /* ============================================================
+       SCROLL TO TOP BUTTON
+    ============================================================ */
+    #scroll-top-btn {
+      position: fixed;
+      bottom: 28px;
+      left: 50%;
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: #ffffff;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      color: #7a9ab5;
+      border: 1.5px solid rgba(220, 230, 240, 0.80);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(100, 140, 180, 0.18), inset 0 1px 0 rgba(255,255,255,0.75);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateX(-50%) translateY(14px);
+      transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+      z-index: 9000;
+    }
+    #scroll-top-btn.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+    }
+    #scroll-top-btn:hover {
+      background: #f0f5fa;
+      color: #5a7fa0;
+    }
+
+    /* ============================================================
        6. CONTACTS SECTION
     ============================================================ */
     #contacts {
@@ -1756,6 +1792,28 @@
     }, { passive: true });
   })();
 
+</script>
+
+<!-- 맨 위로 버튼 -->
+<button id="scroll-top-btn" aria-label="맨 위로">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22">
+    <polyline points="18 15 12 8 6 15"/>
+  </svg>
+</button>
+<script>
+  (function () {
+    const btn = document.getElementById('scroll-top-btn');
+    window.addEventListener('scroll', function () {
+      if (window.scrollY > 300) {
+        btn.classList.add('visible');
+      } else {
+        btn.classList.remove('visible');
+      }
+    }, { passive: true });
+    btn.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  })();
 </script>
 </body>
 </html>
