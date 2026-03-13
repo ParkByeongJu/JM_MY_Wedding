@@ -45,7 +45,7 @@
       inset: 0;
       background:
         linear-gradient(rgba(0, 0, 0, 0.30), rgba(0, 0, 0, 0.30)),
-        url('images/gallery0.jpg') center / cover no-repeat;
+        url('images/gallery0.jpeg') center / cover no-repeat;
       filter: blur(22px);
       transform: scale(1.1); /* 블러 가장자리 흰 테두리 방지 */
       z-index: 0;
@@ -547,6 +547,45 @@
       background: #f0f5fa;
       color: #5a7fa0;
     }
+
+    /* ============================================================
+       BGM BUTTON
+    ============================================================ */
+    #bgm-btn {
+      position: fixed;
+      top: 16px;
+      right: calc(50% - 240px + 16px); /* wrapper 우측 상단에 고정 */
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 9100;
+      transition: background 0.25s ease, transform 0.2s ease;
+      color: rgba(255, 255, 255, 0.88);
+    }
+    #bgm-btn:hover {
+      background: rgba(255, 255, 255, 0.30);
+      transform: scale(1.06);
+    }
+    /* 화면이 좁아서 wrapper가 전체 폭일 때는 우측 16px 고정 */
+    @media (max-width: 512px) {
+      #bgm-btn {
+        right: 16px;
+      }
+    }
+    /* 뮤트 상태일 때 빗금 아이콘 표시 */
+    #bgm-btn .icon-sound { display: block; }
+    #bgm-btn .icon-mute  { display: none;  }
+    #bgm-btn.muted .icon-sound { display: none;  }
+    #bgm-btn.muted .icon-mute  { display: block; }
 
     /* ============================================================
        6. CONTACTS SECTION
@@ -1859,6 +1898,67 @@
     }, { passive: true });
   })();
 
+</script>
+
+<!-- BGM -->
+<audio id="bgm" loop preload="auto">
+  <source src="music/디지몬 어드벤처 ost - Rabel Bolero.mp4" type="audio/mp4">
+</audio>
+
+<!-- BGM 버튼 -->
+<button id="bgm-btn" aria-label="배경음악 켜기/끄기">
+  <!-- 소리 켜짐 아이콘 -->
+  <svg class="icon-sound" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+    <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+    <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+  </svg>
+  <!-- 소리 꺼짐 아이콘 -->
+  <svg class="icon-mute" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+    <line x1="23" y1="9" x2="17" y2="15"/>
+    <line x1="17" y1="9" x2="23" y2="15"/>
+  </svg>
+</button>
+<script>
+  (function () {
+    const audio = document.getElementById('bgm');
+    const btn   = document.getElementById('bgm-btn');
+    audio.volume = 0.45;
+
+    /* ── 재생 시작 ── */
+    function playBgm() {
+      audio.play().catch(function () {});
+      btn.classList.remove('muted');
+    }
+
+    /* ── 페이지 로드 즉시 재생 시도 ── */
+    /* 브라우저 자동재생 정책에 의해 막히면 첫 인터랙션 시 재생 */
+    audio.play().then(function () {
+      btn.classList.remove('muted');   /* 재생 성공 */
+    }).catch(function () {
+      /* 자동재생 차단됨 → 첫 터치/클릭 시 시작 */
+      btn.classList.add('muted');      /* 아직 재생 안 됨을 아이콘으로 표시 */
+      function onFirstInteraction() {
+        playBgm();
+        document.removeEventListener('touchstart', onFirstInteraction);
+        document.removeEventListener('click',      onFirstInteraction);
+      }
+      document.addEventListener('touchstart', onFirstInteraction, { once: true });
+      document.addEventListener('click',      onFirstInteraction, { once: true });
+    });
+
+    /* ── 버튼 토글 (음소거 ↔ 재생) ── */
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      if (audio.paused) {
+        playBgm();
+      } else {
+        audio.pause();
+        btn.classList.add('muted');
+      }
+    });
+  })();
 </script>
 
 <!-- 맨 위로 버튼 -->
