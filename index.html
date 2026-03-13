@@ -1114,7 +1114,7 @@
     <div class="intro-photo-wrapper" id="intro-photo-wrapper">
       <!-- 사진 사이즈 수정 -->
       <img
-        src="images/gallery0.jpeg"
+        src="images/Thumbnail.jpeg"
         alt="신랑 신부 사진"
         class="intro-photo"
         onerror="this.style.display='none'"
@@ -1240,12 +1240,12 @@
       <div class="gallery-item"><img src="images/gallery7.jpeg" alt="웨딩 사진 7"></div>
       <div class="gallery-item"><img src="images/gallery8.jpeg" alt="웨딩 사진 8"></div>
       <div class="gallery-item"><img src="images/gallery9.jpeg" alt="웨딩 사진 9"></div>
-      <div class="gallery-item"><img src="images/gallery10 (1).jpeg" alt="웨딩 사진 10"></div>
-      <div class="gallery-item"><img src="images/gallery11 (1).jpeg" alt="웨딩 사진 11"></div>
-      <div class="gallery-item"><img src="images/gallery12 (1).jpeg" alt="웨딩 사진 12"></div>
-      <div class="gallery-item"><img src="images/gallery13 (1).jpeg" alt="웨딩 사진 13"></div>
-      <div class="gallery-item"><img src="images/gallery14 (1).jpeg" alt="웨딩 사진 14"></div>
-      <div class="gallery-item"><img src="images/gallery15 (1).jpeg" alt="웨딩 사진 15"></div>
+      <div class="gallery-item"><img src="images/gallery10.jpeg" alt="웨딩 사진 10"></div>
+      <div class="gallery-item"><img src="images/gallery11.jpeg" alt="웨딩 사진 11"></div>
+      <div class="gallery-item"><img src="images/gallery12.jpeg" alt="웨딩 사진 12"></div>
+      <div class="gallery-item"><img src="images/gallery0.jpeg" alt="웨딩 사진 13"></div>
+      <div class="gallery-item"><img src="images/gallery14.jpeg" alt="웨딩 사진 14"></div>
+      <div class="gallery-item"><img src="images/gallery15.jpeg" alt="웨딩 사진 15"></div>
       <!-- <div class="gallery-item"><img src="images/gallery1.jpg" alt="웨딩 사진 1" onerror="this.parentElement.style.display='none'"></div>
       <div class="gallery-item"><img src="images/photo2.jpg" alt="웨딩 사진 2" onerror="this.src='images/main.jpg'"></div>
       <div class="gallery-item"><img src="images/photo3.jpg" alt="웨딩 사진 3" onerror="this.src='images/main.jpg'"></div>
@@ -1308,7 +1308,7 @@
   ==================================================== -->
   <section id="accounts" class="fade-section">
     <div class="section-label">Gift</div>
-    <div class="section-title">축의금 계좌</div>
+    <div class="section-title">마음 전하실 곳</div>
     <div class="divider"></div>
 
     <!-- 신랑측 -->
@@ -1651,10 +1651,12 @@
       map:      map,
       position: new kakao.maps.LatLng(LAT, LNG)
     });
-    const iw = new kakao.maps.InfoWindow({
-      content: '<div style="padding:6px 12px;font-size:12px;font-weight:500;white-space:nowrap;">서초동성당</div>'
+    const overlay = new kakao.maps.CustomOverlay({
+      map:      map,
+      position: new kakao.maps.LatLng(LAT, LNG),
+      content:  '<div style="display:inline-block;background:#fff;border:1px solid #bbb;border-radius:3px;padding:2px 5px;font-size:12px;font-weight:500;white-space:nowrap;line-height:1;transform:translateY(-38px);">서초동성당</div>',
+      yAnchor:  1
     });
-    iw.open(map, marker);
   }
 
   function showMapFallback() {
@@ -1835,20 +1837,20 @@
     let currentIdx = 0;
 
     /* 각 갤러리 이미지에 클릭 핸들러 등록 */
-    galleryImgs.forEach(function (img, idx) {
-      img.addEventListener('click', function () { openLightbox(idx); });
-    });
+    // galleryImgs.forEach(function (img, idx) {
+    //   img.addEventListener('click', function () { openLightbox(idx); });
+    // });
 
-    function openLightbox(idx) {
-      currentIdx = idx;
-      const lb      = document.getElementById('lightbox');
-      const imgEl   = document.getElementById('lightbox-img');
-      const counter = document.getElementById('lightbox-counter');
-      imgEl.src           = galleryImgs[idx].src;
-      counter.textContent = (idx + 1) + ' / ' + galleryImgs.length;
-      lb.classList.add('active');
-      document.body.style.overflow = 'hidden';
-    }
+    // function openLightbox(idx) {
+    //   currentIdx = idx;
+    //   const lb      = document.getElementById('lightbox');
+    //   const imgEl   = document.getElementById('lightbox-img');
+    //   const counter = document.getElementById('lightbox-counter');
+    //   imgEl.src           = galleryImgs[idx].src;
+    //   counter.textContent = (idx + 1) + ' / ' + galleryImgs.length;
+    //   lb.classList.add('active');
+    //   document.body.style.overflow = 'hidden';
+    // }
 
     function closeLightbox() {
       document.getElementById('lightbox').classList.remove('active');
@@ -1902,7 +1904,7 @@
 
 <!-- BGM -->
 <audio id="bgm" loop preload="auto">
-  <source src="music/디지몬 어드벤처 ost - Rabel Bolero.mp4" type="audio/mp4">
+  <source src="music/music.mp4" type="audio/mp4">
 </audio>
 
 <!-- BGM 버튼 -->
