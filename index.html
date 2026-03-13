@@ -8,8 +8,8 @@
   <!-- OG Tags for KakaoTalk / SNS sharing -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="김재민 ♥ 김미영 결혼식에 초대합니다">
-  <meta property="og:description" content="2026년 5월 2일 토요일 | 개쩌는 웨딩홀">
-  <meta property="og:image" content="https://parkbyeongju.github.io/JM_MY_Wedding/images/gallery0.jpg">
+  <meta property="og:description" content="2026년 5월 2일 토요일 | 서초동성당">
+  <meta property="og:image" content="https://parkbyeongju.github.io/JM_MY_Wedding/images/Thumbnail.jpeg">
   <meta property="og:url" content="https://parkbyeongju.github.io/JM_MY_Wedding/">
 
   <!-- Google Fonts -->
@@ -104,7 +104,7 @@
     .intro-photo-wrapper {
       position: relative;
       width: 100%;
-      aspect-ratio: 3 / 4;
+      aspect-ratio: 4 / 3;
       overflow: hidden;
       background: linear-gradient(135deg, #a8c5da 0%, #6a9ab8 50%, #4a7c9e 100%);
     }
@@ -113,6 +113,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center center;
       display: block;
     }
 
@@ -370,16 +371,18 @@
     }
 
     .transport-icon {
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
+      min-width: 36px;
+      height: 24px;
+      border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 600;
       flex-shrink: 0;
-      margin-top: 1px;
+      margin-top: 2px;
+      padding: 0 6px;
+      white-space: nowrap;
     }
 
     .t-subway { background: #2ecc71; color: #fff; }
@@ -659,9 +662,22 @@
 
     .account-row {
       display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .account-entry {
+      display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 10px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .account-entry:last-child {
+      padding-bottom: 0;
+      border-bottom: none;
     }
 
     .account-info-text {
@@ -1057,8 +1073,9 @@
   ==================================================== -->
   <section id="intro">
     <div class="intro-photo-wrapper" id="intro-photo-wrapper">
+      <!-- 사진 사이즈 수정 -->
       <img
-        src="images/gallery0.jpg"
+        src="images/gallery0.jpeg"
         alt="신랑 신부 사진"
         class="intro-photo"
         onerror="this.style.display='none'"
@@ -1072,7 +1089,7 @@
     <div class="intro-info">
       <div class="intro-names">김재민 &thinsp;|&thinsp; 김미영</div>
       <div class="intro-date">2026 . 05 . 02 &nbsp; 토요일</div>
-      <div class="intro-venue">개쩌는 웨딩홀</div>
+      <div class="intro-venue">서초동성당</div>
       <div class="intro-invitation">I N V I T A T I O N</div>
     </div>
   </section>
@@ -1085,16 +1102,22 @@
     <div class="section-title">인사말</div>
     <div class="divider"></div>
     <p class="greeting-text">
-      서로 다른 두 사람이<br>
+      두 사람이 함께하는 네 번째 봄<br>
+      포근했던 첫 봄날의 마음을 떠올리며<br>
+      인생의 긴 여행을 시작하려 합니다.<br>
+      저희의 긴 여행의 출발을<br>
+      함꼐 지켜봐 주시고 격려해 주신다면<br>
+      더없는 기쁨으로 간직하겠습니다.<br>
+      <!-- 서로 다른 두 사람이<br>
       하나가 되는 날,<br>
       소중한 분들을 모시고<br>
       작은 결혼식을 올리려 합니다.<br><br>
       바쁘신 중에도 자리를 빛내 주신다면<br>
-      더없는 기쁨과 영광이 되겠습니다.
+      더없는 기쁨과 영광이 되겠습니다. -->
     </p>
     <p class="greeting-sub">
-      재민 부 &nbsp;·&nbsp; 재민 모 &nbsp;의 아들 &nbsp;<strong style="color:#555;font-weight:400;">재민</strong><br>
-      미영 부 &nbsp;·&nbsp; 미영 모 &nbsp;의 딸 &nbsp;<strong style="color:#555;font-weight:400;">미영</strong>
+      김경천 &nbsp;·&nbsp; 신동숙 &nbsp;의 차남 &nbsp;<strong style="color:#555;font-weight:400;">재민</strong><br>
+      김성철 &nbsp;·&nbsp; 고영희 &nbsp;의 장녀 &nbsp;<strong style="color:#555;font-weight:400;">미영</strong>
     </p>
   </section>
 
@@ -1111,7 +1134,7 @@
         <!-- Injected by JS -->
       </div>
     </div>
-    <p class="calendar-note">2026년 5월 2일 토요일 오후 xx시</p>
+    <p class="calendar-note">2026년 5월 2일 토요일 오후 12시</p>
     <div class="dday-box" id="dday-box">
       <div class="dday-main">
         <span class="dday-label" id="dday-label">D -</span>
@@ -1131,25 +1154,32 @@
 
     <div id="kakao-map"></div>
 
-    <div class="venue-name">개쩌는 웨딩홀</div>
+    <div class="venue-name">서초동 성당</div>
     <div class="venue-address">
-      서울특별시 개쩌는 웨딩홀 주소<br>
-      TEL. 02-000-0000 &nbsp;|&nbsp; 주차 가능
+      서울특별시 서초구 서초대로64길 73<br>
+      <!-- TEL. 02-000-0000 &nbsp;|&nbsp; 주차 가능 -->
     </div>
 
     <div class="transport-section">
       <div class="transport-title">T R A N S P O R T</div>
       <div class="transport-item">
-        <div class="transport-icon t-subway">지하</div>
-        <div>X호선 XX역 X번 출구에서 도보 약 5분</div>
+        <div class="transport-icon t-subway">지하철</div>
+        <div>2호선, 3호선 교대역 1번 출구 도보 10분<br>
+        2호선, 신분당선 강남역 8번출구 도보 10분
+        </div>
       </div>
       <div class="transport-item">
         <div class="transport-icon t-bus">버스</div>
-        <div>XX번, XX번 탑승 후 XX 정류장 하차</div>
+        <div>창신교회 앞 / 유원아파트 / 서초동성당 / 삼성레포츠하차<br>
+          [간선] 144, 350, 740<br>
+          [마을] 03, 10, 21
+        </div>
       </div>
       <div class="transport-item">
         <div class="transport-icon t-car">주차</div>
-        <div>건물 지하 1~3층 주차 가능 (2시간 무료)</div>
+        <div>서초동 성당 주차장(무료), 삼성레포츠 주차장(유료)<br>
+          ※ 예식 당일 혼잡이 예상되오니 대중교통 이용을 권장드립니다.
+        </div>
       </div>
     </div>
   </section>
@@ -1162,15 +1192,21 @@
     <div class="section-title">갤러리</div>
     <div class="divider"></div>
     <div class="gallery-grid">
-      <div class="gallery-item"><img src="images/gallery1.jpg" alt="웨딩 사진 1"></div>
-      <div class="gallery-item"><img src="images/gallery2.jpg" alt="웨딩 사진 2"></div>
-      <div class="gallery-item"><img src="images/gallery3.jpg" alt="웨딩 사진 3"></div>
-      <div class="gallery-item"><img src="images/gallery4.jpg" alt="웨딩 사진 4"></div>
-      <div class="gallery-item"><img src="images/gallery5.jpg" alt="웨딩 사진 5"></div>
-      <div class="gallery-item"><img src="images/gallery6.jpg" alt="웨딩 사진 6"></div>
-      <div class="gallery-item"><img src="images/gallery7.jpg" alt="웨딩 사진 7"></div>
-      <div class="gallery-item"><img src="images/gallery8.jpg" alt="웨딩 사진 8"></div>
-      <div class="gallery-item"><img src="images/gallery9.jpg" alt="웨딩 사진 9"></div>
+      <div class="gallery-item"><img src="images/gallery1.jpeg" alt="웨딩 사진 1"></div>
+      <div class="gallery-item"><img src="images/gallery2.jpeg" alt="웨딩 사진 2"></div>
+      <div class="gallery-item"><img src="images/gallery3.jpeg" alt="웨딩 사진 3"></div>
+      <div class="gallery-item"><img src="images/gallery4.jpeg" alt="웨딩 사진 4"></div>
+      <div class="gallery-item"><img src="images/gallery5.jpeg" alt="웨딩 사진 5"></div>
+      <div class="gallery-item"><img src="images/gallery6.jpeg" alt="웨딩 사진 6"></div>
+      <div class="gallery-item"><img src="images/gallery7.jpeg" alt="웨딩 사진 7"></div>
+      <div class="gallery-item"><img src="images/gallery8.jpeg" alt="웨딩 사진 8"></div>
+      <div class="gallery-item"><img src="images/gallery9.jpeg" alt="웨딩 사진 9"></div>
+      <div class="gallery-item"><img src="images/gallery10 (1).jpeg" alt="웨딩 사진 10"></div>
+      <div class="gallery-item"><img src="images/gallery11 (1).jpeg" alt="웨딩 사진 11"></div>
+      <div class="gallery-item"><img src="images/gallery12 (1).jpeg" alt="웨딩 사진 12"></div>
+      <div class="gallery-item"><img src="images/gallery13 (1).jpeg" alt="웨딩 사진 13"></div>
+      <div class="gallery-item"><img src="images/gallery14 (1).jpeg" alt="웨딩 사진 14"></div>
+      <div class="gallery-item"><img src="images/gallery15 (1).jpeg" alt="웨딩 사진 15"></div>
       <!-- <div class="gallery-item"><img src="images/gallery1.jpg" alt="웨딩 사진 1" onerror="this.parentElement.style.display='none'"></div>
       <div class="gallery-item"><img src="images/photo2.jpg" alt="웨딩 사진 2" onerror="this.src='images/main.jpg'"></div>
       <div class="gallery-item"><img src="images/photo3.jpg" alt="웨딩 사진 3" onerror="this.src='images/main.jpg'"></div>
@@ -1194,16 +1230,16 @@
     <div class="contact-group">
       <div class="contact-group-label">신랑 &nbsp;|&nbsp; 신부</div>
       <div class="contact-btns">
-        <a href="tel:010-6380-4906" class="contact-btn">
+        <a href="tel:010-4389-4004" class="contact-btn">
           <span>📞</span> 신랑 김재민
         </a>
-        <a href="tel:010-6380-4906" class="contact-btn">
+        <a href="tel:010-2172-3958" class="contact-btn">
           <span>📞</span> 신부 김미영
         </a>
       </div>
     </div>
 
-    <div class="contact-group">
+    <!-- <div class="contact-group">
       <div class="contact-group-label">신랑측 혼주</div>
       <div class="contact-btns">
         <a href="tel:010-6380-4906" class="contact-btn">
@@ -1225,7 +1261,7 @@
           <span>📞</span> 미영 어머니
         </a>
       </div>
-    </div>
+    </div> -->
   </section>
 
   <!-- ====================================================
@@ -1244,11 +1280,27 @@
       </button>
       <div class="account-detail">
         <div class="account-row">
-          <div class="account-info-text">
-            <strong>병주은행</strong><br>
-            김재민 &nbsp;·&nbsp; 1234-56-789012
+          <div class="account-entry">
+            <div class="account-info-text">
+              <strong>병주은행</strong><br>
+              김재민 &nbsp;·&nbsp; 1234-56-789012
+            </div>
+            <button class="copy-btn" onclick="copyAccount('1234-56-789012')">복사</button>
           </div>
-          <button class="copy-btn" onclick="copyAccount('병주은행 김재민 1234-56-789012')">복사</button>
+          <div class="account-entry">
+            <div class="account-info-text">
+              <strong>병주은행</strong><br>
+              재민 부 &nbsp;·&nbsp; 1234-56-789012
+            </div>
+            <button class="copy-btn" onclick="copyAccount('1234-56-789012')">복사</button>
+          </div>
+          <div class="account-entry">
+            <div class="account-info-text">
+              <strong>병주은행</strong><br>
+              재민 모 &nbsp;·&nbsp; 1234-56-789012
+            </div>
+            <button class="copy-btn" onclick="copyAccount('국민은행 박병주 515502-01-417125')">복사</button>
+          </div>
         </div>
       </div>
     </div>
@@ -1261,11 +1313,27 @@
       </button>
       <div class="account-detail">
         <div class="account-row">
-          <div class="account-info-text">
-            <strong>병주은행</strong><br>
-            김미영 &nbsp;·&nbsp; 1234-56-789012
+          <div class="account-entry">
+            <div class="account-info-text">
+              <strong>병주은행</strong><br>
+              김미영 &nbsp;·&nbsp; 1234-56-789012
+            </div>
+            <button class="copy-btn" onclick="copyAccount('1234-56-789012')">복사</button>
           </div>
-          <button class="copy-btn" onclick="copyAccount('병주은행 김미영 1234-56-789012')">복사</button>
+          <div class="account-entry">
+            <div class="account-info-text">
+              <strong>병주은행</strong><br>
+              미영 부 &nbsp;·&nbsp; 1234-56-789012
+            </div>
+            <button class="copy-btn" onclick="copyAccount('1234-56-789012')">복사</button>
+          </div>
+          <div class="account-entry">
+            <div class="account-info-text">
+              <strong>병주은행</strong><br>
+              미영 모 &nbsp;·&nbsp; 1234-56-789012
+            </div>
+            <button class="copy-btn" onclick="copyAccount('1234-56-789012')">복사</button>
+          </div>
         </div>
       </div>
     </div>
@@ -1532,9 +1600,9 @@
      KAKAO MAP
   ───────────────────────────────────────── */
   function initKakaoMap() {
-    /* ★ 실제 웨딩홀 좌표로 교체하세요 (현재: 서울시청 기준) */
-    const LAT = 37.5663;
-    const LNG = 126.9779;
+    /* 서초동 성당 (서울특별시 서초구 서초대로64길 73) */
+    const LAT = 37.4853;
+    const LNG = 127.0077;
     const container = document.getElementById('kakao-map');
     const map = new kakao.maps.Map(container, {
       center: new kakao.maps.LatLng(LAT, LNG),
@@ -1545,15 +1613,14 @@
       position: new kakao.maps.LatLng(LAT, LNG)
     });
     const iw = new kakao.maps.InfoWindow({
-      content: '<div style="padding:6px 12px;font-size:12px;font-weight:500;white-space:nowrap;">개쩌는 웨딩홀</div>'
+      content: '<div style="padding:6px 12px;font-size:12px;font-weight:500;white-space:nowrap;">서초동 성당</div>'
     });
     iw.open(map, marker);
   }
 
   function showMapFallback() {
     const container = document.getElementById('kakao-map');
-    /* ★ 실제 웨딩홀 카카오맵 URL로 교체하세요 */
-    const kakaoMapUrl = 'https://map.kakao.com/link/search/개쩌는웨딩홀';
+    const kakaoMapUrl = 'https://map.kakao.com/link/search/서초동성당';
     container.style.cssText = 'display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:#f5f8fa;border-radius:10px;';
     container.innerHTML = `
       <div style="font-size:28px;">🗺️</div>
