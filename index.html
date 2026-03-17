@@ -754,6 +754,103 @@
       color: #fff;
     }
 
+    /* 축복미 버튼 */
+    .rice-wreath-btn {
+      display: block;
+      width: calc(100% - 36px);
+      margin: 4px 18px 18px;
+      padding: 13px 18px;
+      border-radius: 10px;
+      border: 1.5px solid #c8a800;
+      background: #fffdf0;
+      color: #a08800;
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 13.5px;
+      font-weight: 400;
+      cursor: pointer;
+      text-align: center;
+      letter-spacing: 0.03em;
+      transition: background 0.18s, color 0.18s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .rice-wreath-btn:active {
+      background: #FFD700;
+      color: #fff;
+    }
+
+    /* 축복미 모달 */
+    #rice-modal-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+      z-index: 9500;
+      align-items: center;
+      justify-content: center;
+    }
+    #rice-modal-backdrop.open {
+      display: flex;
+    }
+    #rice-modal {
+      background: #fff;
+      border-radius: 16px;
+      padding: 28px 24px 22px;
+      max-width: 320px;
+      width: 88%;
+      text-align: center;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+      position: relative;
+    }
+    #rice-modal .rice-modal-icon {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+    #rice-modal .rice-modal-title {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 14px;
+    }
+    #rice-modal .rice-modal-body {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 13px;
+      color: #555;
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+    #rice-modal .rice-call-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      background: #FFD700;
+      border: none;
+      color: #7a6000;
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 13.5px;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      margin-bottom: 10px;
+      transition: background 0.18s;
+    }
+    #rice-modal .rice-call-btn:active {
+      background: #e6c200;
+    }
+    #rice-modal .rice-close-btn {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 12.5px;
+      color: #aaa;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px 12px;
+    }
+
     /* ============================================================
        8. GUESTBOOK SECTION
     ============================================================ */
@@ -1376,7 +1473,28 @@
         </div>
       </div>
     </div>
+
+    <!-- 축복미 버튼 -->
+    <button class="rice-wreath-btn" onclick="document.getElementById('rice-modal-backdrop').classList.add('open')">
+      🌾 축복미 보내기
+    </button>
   </section>
+
+  <!-- 축복미 모달 -->
+  <div id="rice-modal-backdrop" onclick="if(event.target===this)this.classList.remove('open')">
+    <div id="rice-modal">
+      <div class="rice-modal-icon">🌾</div>
+      <div class="rice-modal-title">축복미 안내</div>
+      <div class="rice-modal-body">
+        축하화환, 꽃바구니 등 반입이 불가합니다.<br>
+        이를 대신한 <strong>축복미(쌀화환)</strong>만 가능합니다.
+      </div>
+      <a class="rice-call-btn" href="tel:0225856101">
+        📞 성당 사무실 &nbsp; 02.585.6101
+      </a>
+      <button class="rice-close-btn" onclick="document.getElementById('rice-modal-backdrop').classList.remove('open')">닫기</button>
+    </div>
+  </div>
 
   <!-- ====================================================
        8. GUESTBOOK
