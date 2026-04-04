@@ -104,12 +104,16 @@
     .intro-photo-wrapper {
       position: relative;
       width: 100%;
+      aspect-ratio: 9 / 10;
+      overflow: hidden;
       background: linear-gradient(135deg, #a8c5da 0%, #6a9ab8 50%, #4a7c9e 100%);
     }
 
     .intro-photo {
       width: 100%;
-      height: auto;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
       display: block;
     }
 
@@ -1296,7 +1300,7 @@
     <div class="divider"></div>
     <div class="gallery-grid">
       <div class="gallery-item"><img src="images/gallery1.jpeg" alt="웨딩 사진 1"></div>
-      <div class="gallery-item"><img src="images/gallery2.png" alt="웨딩 사진 2"></div>
+      <div class="gallery-item"><img src="images/gallery2.jpeg" alt="웨딩 사진 2"></div>
       <div class="gallery-item"><img src="images/gallery3.jpeg" alt="웨딩 사진 3"></div>
       <div class="gallery-item"><img src="images/gallery4.jpeg" alt="웨딩 사진 4"></div>
       <div class="gallery-item"><img src="images/gallery5.jpeg" alt="웨딩 사진 5"></div>
@@ -1897,7 +1901,7 @@
     const allImgs = Array.from(document.querySelectorAll('.gallery-item img'));
 
     /* 라이트박스 활성화 사진 번호 (1-based): 1,2,3,5,7,8,9,10,11,12,13,15 */
-    const enabledNums = [1,2,3,5,7,8,9,10,11,12,13,15];
+    const enabledNums = [1,2,3,4,6,7,8,9,10,11,12,13,14,15];
     const lbImgs = enabledNums.map(function(n) { return allImgs[n - 1]; }).filter(Boolean);
 
     let currentIdx = 0;
