@@ -559,6 +559,61 @@
     #bgm-btn.muted .icon-mute  { display: block; }
 
     /* ============================================================
+       5-1. PHOTO SHARE SECTION
+    ============================================================ */
+    #photo-share {
+      background: #fcfcfc;
+      text-align: center;
+    }
+
+    .photo-share-card {
+      background: #fff;
+      border: 1px solid #f0e9c0;
+      border-radius: 14px;
+      padding: 28px 24px;
+      margin-top: 4px;
+    }
+
+    .photo-share-icon {
+      font-size: 36px;
+      margin-bottom: 12px;
+    }
+
+    .photo-share-desc {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 13px;
+      font-weight: 300;
+      color: #888;
+      line-height: 1.9;
+      margin-bottom: 20px;
+    }
+
+    .photo-share-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 32px;
+      background: #FFD700;
+      color: #7a6000;
+      border: none;
+      border-radius: 30px;
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      cursor: pointer;
+      letter-spacing: 0.5px;
+      transition: background 0.2s, transform 0.15s;
+      box-shadow: 0 3px 14px rgba(255, 215, 0, 0.35);
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .photo-share-btn:active {
+      background: #e6c200;
+      transform: scale(0.97);
+    }
+
+    /* ============================================================
        6. CONTACTS SECTION
     ============================================================ */
     #contacts {
@@ -1323,6 +1378,31 @@
       <div class="gallery-item"><img src="images/photo7.jpg" alt="웨딩 사진 7" onerror="this.src='images/main.jpg'"></div>
       <div class="gallery-item"><img src="images/photo8.jpg" alt="웨딩 사진 8" onerror="this.src='images/main.jpg'"></div>
       <div class="gallery-item"><img src="images/photo9.jpg" alt="웨딩 사진 9" onerror="this.src='images/main.jpg'"></div> -->
+    </div>
+  </section>
+
+  <!-- ====================================================
+       5-1. PHOTO SHARE
+  ==================================================== -->
+  <section id="photo-share" class="fade-section">
+    <div class="section-label">Memory</div>
+    <div class="section-title">사진 · 영상 공유</div>
+    <div class="divider"></div>
+    <div class="photo-share-card">
+      <div class="photo-share-icon">📸</div>
+      <p class="photo-share-desc">
+        결혼식 당일 찍으신 사진과 영상을<br>
+        아래 링크에서 함께 나눠주세요.<br>
+        소중한 순간들을 모아두겠습니다.
+      </p>
+      <a
+        href="https://wedding-photo-git-main-parkbyeongjus-projects.vercel.app/?code=JMMY0502"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="photo-share-btn"
+      >
+        📤 &nbsp;사진 · 영상 올리기
+      </a>
     </div>
   </section>
 
